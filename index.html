@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Reading Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+</head>
+<body>
+<div class="header">
+    <div class="header-title">My Library</div>
+    <button id="add-btn">Add New Book</button>
+</div>
+<div class="card-catalogue"></div>
+<div class="modal">
+    <div class="modal-content">
+        <div class="col1">Title:</div>
+        <div class="col2"><input type="text" id="m-title" placeholder="Title [required]"></div>
+        <div class="col1">Author:</div>
+        <div class="col2"><input type="text" id="m-author" placeholder="Author"></div>
+        <div class="col1">Description:</div>
+        <div class="col2"><textarea id="m-description" placeholder="Description"></textarea></div>
+        <div class="col1">Pages:</div>
+        <div class="col2"><input type="number" id="m-pages" placeholder="Pages" min="0"></div>
+        <div class="col1">Year:</div>
+        <div class="col2"><input type="number" id="m-year" placeholder="Year" min="0"></div>
+        <div class="col1">Read:</div>
+        <label class="col2 checkbox" id="m-read">
+            <input type="checkbox" id="m-checkbox">
+            <span class="checkmark" id="m-checkmark"></span>
+        </label>
+        <div class="col1">Image URL:</div>
+        <div class="col2"><input type="text" id="m-image-url" placeholder="http://"></div>
+        <div class="modal-buttons">
+            <button class="btn" id="m-submit">Submit</button>
+            <button class="btn" id="m-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="library.js"></script>
+</body>
+</html>

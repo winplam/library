@@ -1,0 +1,332 @@
+* {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 16pt;
+    --main-background-color: #F5F5DC; /* Beige */
+    --header-background-color: #5A0000; /* Deep Red */
+    --index-card-background-color: #EEE; /* Gray */
+    --index-card-border-color: #879AAF; /* Blueish */
+    --button-color: #2196F3; /* Blue */
+    --button-hover-color: #FFA500; /* Orange */
+    --border-color: #FFFF;
+    --book-cover-height: 400px;
+    --book-cover-width: 270px;
+}
+
+body {
+    background-color: var(--main-background-color);
+}
+
+.header {
+    background-color: var(--header-background-color);
+    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 4vw 0 3vw;
+    height: 5vh;
+    width: 93vw;
+    /* Position */
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.header-title {
+    color: #F5F5DC; /* Beige */
+    font-size: 3vh;
+    text-shadow: .3vh .3vh #000;
+    text-transform: uppercase;
+}
+
+#add-btn {
+    background-color: #F5F5DC;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    border: 2px solid black;
+    border-radius: .5vh;
+    cursor: pointer;
+    font-size: 2vh;
+    outline: none;
+    overflow: hidden;
+    padding: 0 1.5% 0 1.5%;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#add-btn:hover {
+    background-color: #EEE;
+}
+
+#add-btn:active {
+    transform: translateY(2px) translateX(2px);
+}
+
+/* ========= Books */
+.card-catalogue {
+    margin: 7vh auto 0 auto;
+    width: 95vw;
+    /* flex box */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background: var(--index-card-background-color) url("books.png") no-repeat;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .5rem;
+    margin: 0 5px 2vh 5px;
+    /* size */
+    height: var(--book-cover-height);
+    width: var(--book-cover-width);
+    /* for overlay */
+    position: relative;
+}
+
+.phantom {
+    visibility: hidden;
+}
+
+.book-cover {
+    background-size: cover;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    /* size */
+    height: var(--book-cover-height);
+    width: var(--book-cover-width);
+}
+
+.overlay {
+    background-color: #FFF;
+    border: 1px solid black;
+    border-radius: .5rem;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    opacity: 0.95;
+    margin: 5%;
+    padding: 2.5% 2% 4% 3%;
+    width: 84%;
+    /* display overlay on bottom of book cover */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.buttons {
+    margin-top: 1%;
+    height: 20px;
+}
+
+.btn {
+    background-color: var(--button-color);
+    border: 1px solid black;
+    border-radius: .2rem;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    font-size: .6rem;
+    outline: none;
+    margin-top: 3px;
+    margin-right: .2rem;
+    padding: .1rem .3rem .05rem;
+}
+
+.btn:hover {
+    background-color: var(--button-hover-color);
+}
+
+.btn:active {
+    transform: translateY(2px) translateX(2px);
+}
+
+.title, .author {
+    font-weight: bold;
+    color: #00008B;
+}
+
+.description {
+    padding-left: 3px;
+}
+
+.book-stats {
+    color: #00008B;
+}
+
+/* ========== Read/Unread check mark */
+/* Customize the label (the container) */
+.checkbox {
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    float: right;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    border: 1px solid black;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #EEE;
+}
+
+/* On mouse-over, add a background color */
+.checkbox:hover input ~ .checkmark {
+    background-color: var(--button-hover-color);
+}
+
+.checkbox:active input ~ .checkmark {
+    transform: translateY(2px) translateX(2px);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+    background-color: var(--button-color);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* ======== Add/Edit Book Dialogue Box */
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(1.1);
+    visibility: hidden;
+    /* Size */
+    height: 100%;
+    width: 100%;
+    /* Position */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.modal-content {
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: #F0ECE0; /* Beige */
+    font-family: 'Montserrat', sans-serif;
+    padding: 1.1rem;
+    /* Position */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.show-modal, modal {
+    opacity: 1;
+    transform: scale(1.0);
+    transition: visibility 0s, linear 0s, opacity 0.25s, transform 0.25s;
+    visibility: visible;
+    z-index: 2;
+}
+
+.col1 {
+    font-size: .8rem;
+    text-align: right;
+    margin: 9px 8px 0 0;
+    text-transform: uppercase;
+}
+
+input[type=text], input[type=number], textarea {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid var(--button-color);
+    border-radius: .2rem;
+    font-size: .7rem;
+    padding: 12px;
+    resize: vertical;
+    width: 90%;
+}
+
+textarea {
+    height: 3rem;
+}
+
+input[type=number] {
+    width: 30%;
+}
+
+#m-read {
+    margin: 7px 0 35px 5px;
+}
+
+.modal-buttons {
+    grid-column: 2/3;
+    margin-top: 10px;
+}
+
+/* Style the submit and cancel buttons */
+#m-submit, #m-cancel {
+    font-size: .7rem;
+    padding: .5rem .5rem;
+    text-transform: uppercase;
+}
+
+/* Make single column on narrow screens */
+@media screen and (max-width: 650px) {
+    .card-catalogue {
+        width: 50%;
+    }
+
+    .modal-content {
+        grid-template-columns: 1fr;
+    }
+
+    .col1 {
+        margin: 0;
+        text-align: left;
+    }
+
+    .modal-buttons {
+        grid-column: 1/1;
+    }
+
+}
