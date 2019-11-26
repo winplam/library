@@ -27,6 +27,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     padding: 0 4vw 0 3vw;
     height: 5vh;
+    min-height: 25px;
     width: 93vw;
     /* Position */
     position: fixed;
@@ -54,7 +55,6 @@ body {
     outline: none;
     overflow: hidden;
     padding: 0 1.5% 0 1.5%;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -120,6 +120,7 @@ body {
 }
 
 .buttons {
+    cursor: pointer;
     margin-top: 1%;
     height: 20px;
 }
@@ -271,7 +272,6 @@ body {
     font-size: .8rem;
     text-align: right;
     margin: 9px 8px 0 0;
-    text-transform: uppercase;
 }
 
 input[type=text], input[type=number], textarea {
@@ -287,6 +287,8 @@ input[type=text], input[type=number], textarea {
 }
 
 textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem;
     height: 3rem;
 }
 
@@ -307,7 +309,13 @@ input[type=number] {
 #m-submit, #m-cancel {
     font-size: .7rem;
     padding: .5rem .5rem;
-    text-transform: uppercase;
+}
+
+footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .7rem;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 /* Make single column on narrow screens */
@@ -329,4 +337,14 @@ input[type=number] {
         grid-column: 1/1;
     }
 
+}
+
+@media screen and (max-height: 500px) {
+    .header-title {
+        font-size: .7em;
+    }
+
+    #add-btn {
+        font-size: .5em;
+    }
 }

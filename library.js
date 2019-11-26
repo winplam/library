@@ -1,13 +1,15 @@
-/*TODO
-- Add local storage
-- Add Firebase storage
-*/
+// TODO: Add Firebase storage
 
 // Get nodes for manipulation
 const cardCatalogue = document.querySelector(".card-catalogue");
 const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
 const modalCheckbox = document.querySelector("#m-checkbox");
+
+// Array containing all the books
+let myLibrary = [];
+// String for local storage
+let myLocalLibrary;
 
 // Add event listeners
 window.addEventListener("click", function (e) {
@@ -48,13 +50,10 @@ document.body.addEventListener("click", (e) => {
     } else if (id === "m-cancel") {
         closeModal();
     } else {
-        console.log("uncaught event with id string: " + id);
+        // console.log("uncaught event with id string: " + id);
     }
 })
 ;
-
-// Array containing all the books
-let myLibrary = [];
 
 // Sample books to populate the start page
 const theHungerGames = new Book("The Hunger Games", "Suzanne Collins", 374, 2008, true
@@ -62,7 +61,7 @@ const theHungerGames = new Book("The Hunger Games", "Suzanne Collins", 374, 2008
     , "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg");
 const harryPotter = new Book("Harry Potter and the Order of the Phoenix"
     , "J.K. Rowling", 870, 2004, false
-    , "There is a door at the end of a silent corridor. And it’s haunting Harry Pottter’s dreams."
+    , "There is a door at the end of a silent corridor. And it’s haunting Harry Potter’s dreams."
     , "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg");
 const toKillAMockingbird = new Book("To Kill a Mockingbird", "Harper Lee", 324, 2006, true
     , "The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it."
@@ -127,11 +126,17 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-// Add sample books to the library
+// Load books from localStorage or add sample books to the library
 const samples = [theHungerGames, harryPotter, toKillAMockingbird, prideAndPrejudice, twilight, theBookThief, animalFarm
     , theChroniclesOfNarnia, theHobbit, goneWithTheWind];
-for (const book of samples) {
-    addBookToLibrary(book);
+if (localStorage.getItem(myLocalLibrary)) {
+    console.log("loading library from localStorage");
+    myLibrary = JSON.parse(localStorage.getItem(myLocalLibrary));
+} else {
+    console.log("loading sample books");
+    for (const book of samples) {
+        addBookToLibrary(book);
+    }
 }
 
 // Display books to the page
@@ -167,6 +172,7 @@ function render(library) {
             </article>`);
         cardCatalogue.appendChild(frag);
     }
+    saveToLocalStorage();
     addPhantomElements();
 }
 
@@ -248,8 +254,11 @@ function deleteBtnHandler(target) {
     const id = target.id.substr(11);
     if (window.confirm(`Delete book "${myLibrary[id].title}"?`)) {
         document.getElementById(id).remove();
-        delete myLibrary[parseInt(id)];
+        myLibrary = myLibrary.filter(function (value, index) {
+            return index != id;
+        });
     }
+    saveToLocalStorage();
 }
 
 function openModal() {
@@ -283,6 +292,7 @@ function editCheckBox(target) {
         target.setAttribute("checked", "checked");
         myLibrary[id].read = true;
     }
+    saveToLocalStorage();
 }
 
 function newCheckBox(target) {
@@ -307,4 +317,9 @@ function submitModal(keydownEvent) {
         default:
             break;
     }
+}
+
+// Save myLibrary from memory to localStorage
+function saveToLocalStorage() {
+    localStorage.setItem(myLocalLibrary, JSON.stringify(myLibrary));
 }
