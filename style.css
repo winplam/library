@@ -27,7 +27,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     padding: 0 4vw 0 3vw;
     height: 5vh;
-    min-height: 25px;
+    height: 50px;
     width: 93vw;
     /* Position */
     position: fixed;
@@ -40,8 +40,8 @@ body {
 
 .header-title {
     color: #F5F5DC; /* Beige */
-    font-size: 3vh;
-    text-shadow: .3vh .3vh #000;
+    font-size: 1.7rem;
+    text-shadow: 2px 2px #000;
     text-transform: uppercase;
 }
 
@@ -49,9 +49,9 @@ body {
     background-color: #F5F5DC;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
     border: 2px solid black;
-    border-radius: .5vh;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 2vh;
+    font-size: 1rem;
     outline: none;
     overflow: hidden;
     padding: 0 1.5% 0 1.5%;
@@ -340,11 +340,15 @@ footer {
 }
 
 @media screen and (max-height: 500px) {
+    .header {
+        height: 30px;
+    }
+
     .header-title {
-        font-size: .7em;
+        font-size: 1.1em;
     }
 
     #add-btn {
-        font-size: .5em;
+        font-size: .7em;
     }
 }
