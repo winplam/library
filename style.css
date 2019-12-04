@@ -23,10 +23,9 @@ body {
 
 .header {
     background-color: var(--header-background-color);
-    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.75);
     font-family: 'Montserrat', sans-serif;
     padding: 0 4vw 0 3vw;
-    height: 5vh;
     height: 50px;
     width: 93vw;
     /* Position */
@@ -68,7 +67,7 @@ body {
 
 /* ========= Books */
 .card-catalogue {
-    margin: 7vh auto 0 auto;
+    margin: 70px auto 0 auto;
     width: 95vw;
     /* flex box */
     display: flex;
