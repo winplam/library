@@ -268,6 +268,7 @@ class DeleteBtnHandler {
             return index != id;
         });
         // }
+        Render.display(myLibrary);
         SaveToSessionStorage.save();
     }
 }
