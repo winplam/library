@@ -14,31 +14,35 @@
 </div>
 <div class="card-catalogue"></div>
 <div class="modal">
-    <div class="modal-content">
-        <div class="col1">Title:</div>
-        <div class="col2"><input type="text" id="m-title" placeholder="Title"></div>
-        <div class="col1">Author:</div>
-        <div class="col2"><input type="text" id="m-author" placeholder="Author"></div>
-        <div class="col1">Description:</div>
-        <div class="col2"><textarea id="m-description" placeholder="Description"></textarea></div>
-        <div class="col1">Pages:</div>
-        <div class="col2"><input type="number" id="m-pages" placeholder="Pages" min="0"></div>
-        <div class="col1">Year:</div>
-        <div class="col2"><input type="number" id="m-year" placeholder="Year" min="0"></div>
-        <div class="col1">Read:</div>
-        <label class="col2 checkbox" id="m-read">
-            <input type="checkbox" id="m-checkbox">
-            <span class="checkmark" id="m-checkmark"></span>
-        </label>
-        <div class="col1">Image URL:</div>
-        <div class="col2"><input type="text" id="m-image-url" placeholder="http://"></div>
-        <div class="modal-buttons">
-            <button class="btn" id="m-submit">Submit</button>
-            <button class="btn" id="m-cancel">Cancel</button>
+    <form>
+        <div class="modal-content">
+            <div class="col1">Title:</div>
+            <div class="col2"><input type="text" id="m-title" placeholder="Title [Required]" required/></div>
+            <div class="col1">Author:</div>
+            <div class="col2"><input type="text" id="m-author" placeholder="Author"/></div>
+            <div class="col1">Description:</div>
+            <div class="col2"><textarea id="m-description" placeholder="Description"></textarea></div>
+            <div class="col1">Pages:</div>
+            <div class="col2"><input type="number" id="m-pages" placeholder="Pages" min="0"/></div>
+            <div class="col1">Year:</div>
+            <div class="col2"><input type="number" id="m-year" placeholder="Year" min="0"/></div>
+            <div class="col1">Read:</div>
+            <label class="col2 checkbox" id="m-read">
+                <input type="checkbox" id="m-checkbox">
+                <span class="checkmark" id="m-checkmark"></span>
+            </label>
+            <div class="col1">Image URL:</div>
+            <div class="col2"><input type="text" id="m-image-url" placeholder="http://"/></div>
+            <div class="modal-buttons">
+                <input type="submit" class="btn" id="m-submit"/>
+                <input type="button" class="btn" id="m-cancel" value="Cancel"/>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
-<footer>This app was made for a <a href="https://www.theodinproject.com/courses/javascript/lessons/library">Javascript coding assignment</a> at The Oden Project.</footer>
+<footer>This app was made for a <a href="https://www.theodinproject.com/courses/javascript/lessons/library">Javascript
+    coding assignment</a> at The Oden Project.
+</footer>
 <script type="text/javascript" src="library.js"></script>
 </body>
 </html>

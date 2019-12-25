@@ -225,19 +225,23 @@ Render.display(myLibrary);
 class SubmitBook {
     static submit() {
         const title = document.getElementById("m-title").value;
-        const author = document.getElementById("m-author").value;
-        const desc = document.getElementById("m-description").value;
-        const pages = document.getElementById("m-pages").value;
-        const year = document.getElementById("m-year").value;
-        let read = (/true/i).test(document.getElementById("m-checkbox").value);
-        const cover = document.getElementById("m-image-url").value;
-        if (modalContent.id != "") {
-            myLibrary[modalContent.id] = new Book(title, author, pages, year, read, desc, cover);
+        if (title == "") {
+            console.log("Please enter a book title.");
         } else {
-            AddBookToLibrary.add(new Book(title, author, pages, year, read, desc, cover));
+            const author = document.getElementById("m-author").value;
+            const desc = document.getElementById("m-description").value;
+            const pages = document.getElementById("m-pages").value;
+            const year = document.getElementById("m-year").value;
+            let read = (/true/i).test(document.getElementById("m-checkbox").value);
+            const cover = document.getElementById("m-image-url").value;
+            if (modalContent.id != "") {
+                myLibrary[modalContent.id] = new Book(title, author, pages, year, read, desc, cover);
+            } else {
+                AddBookToLibrary.add(new Book(title, author, pages, year, read, desc, cover));
+            }
+            Render.display(myLibrary);
+            CloseModal.close();
         }
-        Render.display(myLibrary);
-        CloseModal.close();
     }
 }
 
